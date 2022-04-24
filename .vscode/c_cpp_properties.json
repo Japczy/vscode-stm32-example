@@ -1,0 +1,44 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                // "${workspaceFolder}/**"
+                "${workspaceRoot}",
+                "${workspaceRoot}/Core/Inc",
+                "${workspaceRoot}/Drivers/CMSIS/Include",
+                "${workspaceRoot}/Drivers/CMSIS/Device/ST/STM32F10x/Include",
+                "/home/chledora/Embedded/arm-gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include",
+                "/home/chledora/Embedded/arm-gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/c++/10.3.1",
+                "/home/chledora/Embedded/arm-gcc/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include",
+                "/home/chledora/Embedded/arm-gcc/gcc-arm-none-eabi-10.3-2021.10/lib/gcc/arm-none-eabi/10.3.1/include-fixed",
+                "/home/chledora/Embedded/arm-gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/machine",
+                "/home/chledora/Embedded/arm-gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/newlib-nano",
+                "/home/chledora/Embedded/arm-gcc/gcc-arm-none-eabi-10.3-2021.10/arm-none-eabi/include/sys"
+            ],
+            "defines": [
+                "DEBUG",
+                "STM32F103xB"
+            ],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c11",
+            "cppStandard": "c++20",
+            "browse": {
+                "path": [
+                    "${workspaceRoot}",
+                    "${workspaceRoot}/Core/Inc",
+                    "${workspaceRoot}/Drivers/CMSIS/Include",
+                    "${workspaceRoot}/Drivers/CMSIS/Device/ST/STM32F10x/Include"
+                    // "/usr/arm-none-eabi/include",
+                    // "/usr/arm-none-eabi/include/c++/10.2.0",
+                    // "/lib/gcc/arm-none-eabi/10.2.0/include",
+                    // "/lib/gcc/arm-none-eabi/10.2.0/include-fixed"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": "${workspaceRoot}/.vscode/browse.vc.db"
+            },
+            "intelliSenseMode": "linux-gcc-x64"
+        }
+    ],
+    "version": 4
+}

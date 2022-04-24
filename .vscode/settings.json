@@ -1,0 +1,17 @@
+{
+  "cortex-debug.gdbPath": "/home/chledora/Embedded/arm-gcc/gcc-arm-none-eabi-10.3-2021.10/bin/arm-none-eabi-gdb",
+  "cortex-debug.stlinkPath": "/home/chledora/Embedded/stlink/build/Release/bin/st-util",
+  "cortex-debug.openocdPath": "/usr/bin/openocd",
+  "clang-format.executable": "/usr/bin/clang-format",
+  "clang-format.language.c.style": "{AllowShortLoopsOnASingleLine: true}",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "zachflower.uncrustify",
+  "files.associations": {
+    "*.h": "c",
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "debug.disassemblyView.showSourceCode": true,
+  "cortex-debug.showRTOS": true,
+}

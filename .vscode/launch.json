@@ -1,0 +1,78 @@
+// TODO: ogarnąc zatrzymanie debug w trybie lunch w pierwszej linii main, 
+// jest tak ze zatrzymuje sie teraz po 5s w środku programu
+{
+    "version": "0.2.0",
+    // "externalConsole": false,
+    "configurations": [
+        {
+            "name": "STlink launch [openocd]",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/sample-f1.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "STM32F1XX", //STM32F103RB
+            "interface": "swd",
+            // "debugServer": 4242,
+            "runToEntryPoint": "main",
+            "preLaunchTask": "Build all", // configured in tasks.json
+            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
+            "svdFile": "${workspaceRoot}/Drivers/STM32F103.svd", // Include svd to watch device peripherals
+            "configFiles": [
+                "/usr/share/openocd/scripts/interface/stlink.cfg",
+                "/usr/share/openocd/scripts/target/stm32f1x.cfg"
+            ],
+            // "showDevDebugOutput": "both",
+        },
+        {
+            "name": "STlink attach [openocd]",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/sample-f1.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            "servertype": "openocd",
+            "device": "STM32F1XX", //STM32F103RB
+            "interface": "swd",
+            // "debugServer": 4242,
+            "preLaunchTask": "Build all", // configured in tasks.json
+            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
+            "svdFile": "${workspaceRoot}/Drivers/STM32F103.svd", // Include svd to watch device peripherals
+            "configFiles": [
+                "/usr/share/openocd/scripts/interface/stlink.cfg",
+                "/usr/share/openocd/scripts/target/stm32f1x.cfg"
+            ],
+            // "showDevDebugOutput": "both",
+        },
+        {
+            "name": "STlink launch",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/sample-f1.elf",
+            "request": "launch",
+            "type": "cortex-debug",
+            // "debugServer": 4242,
+            "servertype": "stutil",
+            "device": "STM32F1XX",
+            "interface": "swd",
+            "runToEntryPoint": "main",
+            // "postStartSessionCommands"d: ["workbench.action.debug.restart"],
+            "preLaunchTask": "CleanBuildWtrite", // you can execute command instead of task
+            "svdFile": "${workspaceRoot}/Drivers/STM32F103.svd", // Include svd to watch device peripherals
+            "swoConfig": {} // currently (v1.7.0) not supported
+        },
+        {
+            "name": "STlink attach",
+            "cwd": "${workspaceRoot}",
+            "executable": "${workspaceRoot}/build/sample-f1.elf",
+            "request": "attach",
+            "type": "cortex-debug",
+            // "debugServer": 4242,
+            "servertype": "stutil",
+            "device": "STM32F1XX",
+            "interface": "swd",
+            // "preLaunchCommands": "make", // configured in tasks.json
+            // "preLaunchCommands": ["Build all"], // you can execute command instead of task
+            "svdFile": "${workspaceRoot}/Drivers/STM32F103.svd", // Include svd to watch device peripherals
+            "swoConfig": {} // currently (v1.7.0) not supported
+        }
+    ]
+}
