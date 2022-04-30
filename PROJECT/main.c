@@ -11,7 +11,14 @@
 #include "stm32f1xx.h"
 
 
-#define PIN_PORTB 5
+// #define LED_PIN      5
+// #define LED_PORT     PORTB
+// #define LED_RCC_PORT RCC_APB2ENR_IOPBEN
+
+
+#define LED_PIN      13
+#define LED_PORT     GPIOC
+#define LED_RCC_PORT RCC_APB2ENR_IOPCEN
 
 
 // FIXME: timer na poczatku wyzwala przerwanie, trza dać ifa
@@ -20,10 +27,10 @@ int main(void)
 {
     // asm ("nop"); // test start
 
-    RCC->APB2ENR |= (RCC_APB2ENR_IOPBEN);
+    RCC->APB2ENR |= LED_RCC_PORT;
     RCC->APB1ENR |= RCC_APB1ENR_TIM3EN;
 
-    GPIOcfg(GPIOB, PIN_PORTB, GP_Mode_out_OD_up2MHz); // out al
+    GPIOcfg(LED_PORT, LED_PIN, GP_Mode_out_PP_up2MHz); // out al
 
     // TIM3 - interrupt trigger once per (10M / Fcpu)
     TIM3->CNT = 1;
@@ -36,12 +43,12 @@ int main(void)
 
     for (uint8_t i = 2; i > 0; i--) {
         for (int ii = 0; ii < (8000000UL / 6); ++ii);  // Delay 1s
-        GPIOB->ODR ^= (1 << 5);
+        LED_PORT->ODR ^= (1 << LED_PIN);
     }
 
     for (uint8_t i = 8; i > 0; i--) {
         for (int ii = 0; ii < ((8000000UL / 6) / 10); ++ii);  // Delay 0,1s
-        GPIOB->ODR ^= (1 << 5);
+        LED_PORT->ODR ^= (1 << LED_PIN);
     }
 
     TIM3->CR1 = TIM_CR1_CEN;
@@ -50,6 +57,6 @@ int main(void)
 
 __attribute__((interrupt)) void TIM3_IRQHandler(void)
 {
-    GPIOB->ODR ^= (1 << 5);
+    LED_PORT->ODR ^= (1 << LED_PIN);
     TIM3->SR = 0;
 }

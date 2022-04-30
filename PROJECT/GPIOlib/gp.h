@@ -9,6 +9,9 @@
 #ifndef GPIOlib_GP_H_
 #define GPIOlib_GP_H_
 
+extern int test;
+
+
 #include "stm32f1xx.h"
 
 typedef enum {// CNF[1:0]
@@ -33,4 +36,4 @@ void GPIOcfg(GPIO_TypeDef * GPIOx, uint8_t PIN, MODE_Typedef MODE);
 // void GPIOset(GPIO_TypeDef *GPIOx , uint8_t PIN);
 
 
-#endif /* GPIOlib/GP_H_ */
+#endif /* GPIOlib_GP_H_ */
